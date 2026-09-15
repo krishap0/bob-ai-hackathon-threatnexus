@@ -1,23 +1,2 @@
-# =============================================================================
-# FLEETIQ — Demo Video Link
-# =============================================================================
-# STATUS: PENDING — real video URL must be added before final submission.
-#
-# Replace the placeholder below with the actual video URL once recorded.
-# The video should be 3–5 minutes showing the application running.
-#
-# Accepted platforms:
-#   - YouTube (public or unlisted):  https://youtu.be/...
-#   - Loom:                          https://www.loom.com/share/...
-#   - IBM Box:                       https://ibm.box.com/s/...
-#   - Google Drive (view-only link): https://drive.google.com/...
-#
-# Video requirements:
-#   - Length: 3–5 minutes
-#   - Must show the application running (not just slides)
-#   - Walk through: Dashboard → Disruptions & Shipments → Fleet & Cold Chain → AI Summary → IBM Bob
-#   - Audio narration strongly recommended
-#
-# TODO: Replace the line below with the real video URL before submission.
-# =============================================================================
+FLEETIQ — Demo Video Link
 https://drive.google.com/drive/folders/1MY9eVTDSAi7bPndKxjNde_XGoUWfO2Sl?usp=sharing
