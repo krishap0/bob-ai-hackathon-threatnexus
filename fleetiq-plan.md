@@ -726,7 +726,11 @@ full suite = 173 tests, 0 failures.
 **Expected outcome:** Bob can answer "What are the critical disruptions?" and
 "Which shipments need rerouting?" with live data from FLEETIQ.
 
-**Status:** [ ] pending
+**Status:** [x] done — `bob_mcp/` package created with `tools.py` (6 pure-logic tool functions),
+`server.py` (MCP server with list_tools/call_tool handlers, stdio transport), and `README.md`
+(registration instructions + example Bob queries). `mcp>=1.0.0,<2.0.0` added to requirements.txt.
+54 new Phase 5 tests (tool unit tests + MCP server handler tests + regression). Full suite = 209
+tests, 0 failures.
 
 ---
 
