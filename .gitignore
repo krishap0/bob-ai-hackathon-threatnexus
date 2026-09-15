@@ -94,3 +94,8 @@ logs/
 .terraform/
 *.tfstate
 *.tfstate.backup
+
+# -- SQLite database files (generated locally by seed script) -----------------
+*.db
+*.sqlite
+*.sqlite3

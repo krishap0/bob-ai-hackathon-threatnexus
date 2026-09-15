@@ -1,0 +1,52 @@
+[
+  {
+    "id": "car-001",
+    "name": "Pacific Overland Express",
+    "code": "POE",
+    "reliability_score": 0.92,
+    "speed_score": 0.85,
+    "cost_index": 1.15,
+    "active": true,
+    "supported_route_types": "sea,land"
+  },
+  {
+    "id": "car-002",
+    "name": "FastFreight Systems",
+    "code": "FFS",
+    "reliability_score": 0.71,
+    "speed_score": 0.90,
+    "cost_index": 0.95,
+    "active": true,
+    "supported_route_types": "land,air"
+  },
+  {
+    "id": "car-003",
+    "name": "Continental Cargo Inc.",
+    "code": "CCI",
+    "reliability_score": 0.88,
+    "speed_score": 0.78,
+    "cost_index": 1.05,
+    "active": true,
+    "supported_route_types": "land"
+  },
+  {
+    "id": "car-004",
+    "name": "BlueStar Logistics",
+    "code": "BSL",
+    "reliability_score": 0.95,
+    "speed_score": 0.70,
+    "cost_index": 1.30,
+    "active": true,
+    "supported_route_types": "sea,land,air"
+  },
+  {
+    "id": "car-005",
+    "name": "Apex Air Freight",
+    "code": "AAF",
+    "reliability_score": 0.97,
+    "speed_score": 0.99,
+    "cost_index": 2.50,
+    "active": true,
+    "supported_route_types": "air"
+  }
+]
