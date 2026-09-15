@@ -635,6 +635,11 @@ class TestColdChainRanker:
 # F — Phase 3 API Integration Tests
 # ===========================================================================
 
+@pytest.fixture(scope="module")
+def anyio_backend():
+    return "asyncio"
+
+
 @pytest_asyncio.fixture(scope="module")
 async def client():
     async with AsyncClient(

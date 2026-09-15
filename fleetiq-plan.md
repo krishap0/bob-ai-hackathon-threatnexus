@@ -677,7 +677,7 @@ real seeded data, `/docs` shows full OpenAPI spec.
 **Expected outcome:** API returns scored, ranked data. Recommendations are
 meaningful and include trade-off strings.
 
-**Status:** [ ] pending
+**Status:** [x] done — 139 tests pass (51 unit + 88 API/integration across phase2 regression + phase3 endpoints)
 
 ---
 
@@ -704,7 +704,10 @@ non-deprecated model ID.
 operational briefing. Changing `WATSONX_MODEL_ID` in `.env` changes which model
 is called — zero code changes required.
 
-**Status:** [ ] pending
+**Status:** [x] done — ibm-watsonx-ai added to requirements.txt; watsonx_client.py fully
+implemented with module-level SDK imports, structured Granite prompt, graceful fallback;
+summary router wired; 34 new Phase 4 tests (unit + integration + regression) pass;
+full suite = 173 tests, 0 failures.
 
 ---
 
