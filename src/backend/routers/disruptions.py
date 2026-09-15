@@ -1,5 +1,5 @@
 """
-Disruptions router — GET /api/disruptions
+Disruptions router — GET /api/disruptions  (Phase 2 + Phase 3 extensions)
 """
 
 from typing import Optional
@@ -8,6 +8,7 @@ from sqlalchemy.orm import Session
 from database import get_db
 from models import Disruption, Shipment
 from schemas import DisruptionOut, DisruptionList, ShipmentList, ShipmentOut
+from services import disruption_engine, impact_analyzer
 
 router = APIRouter(prefix="/api/disruptions", tags=["Disruptions"])
 
@@ -42,7 +43,7 @@ def get_disruption(disruption_id: str, db: Session = Depends(get_db)):
 
 @router.get("/{disruption_id}/affected", response_model=ShipmentList)
 def get_affected_shipments(disruption_id: str, db: Session = Depends(get_db)):
-    """List all shipments linked to this disruption."""
+    """List all shipments linked to this disruption (Phase 2 — DB FK lookup)."""
     disruption = db.query(Disruption).filter(Disruption.id == disruption_id).first()
     if not disruption:
         raise HTTPException(status_code=404, detail="Disruption not found")
@@ -53,3 +54,20 @@ def get_affected_shipments(disruption_id: str, db: Session = Depends(get_db)):
         .all()
     )
     return ShipmentList(total=len(items), items=items)
+
+
+# ---------------------------------------------------------------------------
+# Phase 3 — intelligence endpoints
+# ---------------------------------------------------------------------------
+
+@router.get("/{disruption_id}/impact")
+def get_disruption_impact(disruption_id: str, db: Session = Depends(get_db)):
+    """
+    Phase 3: Full disruption impact analysis.
+    Returns all affected shipments detected by route/carrier matching,
+    with per-shipment impact detail and a summary.
+    """
+    disruption = db.query(Disruption).filter(Disruption.id == disruption_id).first()
+    if not disruption:
+        raise HTTPException(status_code=404, detail="Disruption not found")
+    return disruption_engine.get_disruption_impact_summary(disruption_id, db)

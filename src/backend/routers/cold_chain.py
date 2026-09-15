@@ -1,5 +1,5 @@
 """
-Cold-chain router — GET /api/cold-chain
+Cold-chain router — GET /api/cold-chain  (Phase 2 + Phase 3 extensions)
 """
 
 from typing import Optional
@@ -8,6 +8,7 @@ from sqlalchemy.orm import Session
 from database import get_db
 from models import ColdChainReading
 from schemas import ColdChainReadingOut, ColdChainReadingList
+from services import cold_chain_ranker
 
 router = APIRouter(prefix="/api/cold-chain", tags=["Cold Chain"])
 
@@ -28,16 +29,23 @@ def list_cold_chain_readings(
     return ColdChainReadingList(total=len(items), items=items)
 
 
-@router.get("/ranked", response_model=ColdChainReadingList)
+@router.get("/ranked")
 def list_ranked_excursions(db: Session = Depends(get_db)):
-    """List all excursions ranked by severity_score descending."""
-    items = (
-        db.query(ColdChainReading)
-        .filter(ColdChainReading.excursion == True)  # noqa: E712
-        .order_by(ColdChainReading.severity_score.desc())
-        .all()
-    )
-    return ColdChainReadingList(total=len(items), items=items)
+    """
+    Phase 3: Return all excursion readings with full severity scoring,
+    ranked by severity_score descending.
+    """
+    items = cold_chain_ranker.get_ranked_excursions(db)
+    return {"total": len(items), "items": items}
+
+
+@router.get("/{reading_id}/severity")
+def get_reading_severity(reading_id: str, db: Session = Depends(get_db)):
+    """Phase 3: Full severity scoring breakdown for a single cold-chain reading."""
+    result = cold_chain_ranker.get_reading_severity_detail(reading_id, db)
+    if result is None:
+        raise HTTPException(status_code=404, detail="Cold-chain reading not found")
+    return result
 
 
 @router.get("/{reading_id}", response_model=ColdChainReadingOut)
