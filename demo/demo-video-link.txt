@@ -20,4 +20,4 @@
 #
 # TODO: Replace the line below with the real video URL before submission.
 # =============================================================================
-https://www.youtube.com/watch?v=FLEETIQ-DEMO-PENDING
+https://drive.google.com/drive/folders/1MY9eVTDSAi7bPndKxjNde_XGoUWfO2Sl?usp=sharing
